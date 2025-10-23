@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D'BIG BOYS Kitchenette - POS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="pos-container">
+        <!-- Main Content - Menu -->
+        <div class="menu-container">
+            <header class="menu-header">
+                <div class="header-title">
+                     <img src="C:\Users\USER\OneDrive\Desktop\dbbk full\menu&logo\logo.jpg" alt="D'BIG BOYS Kitchenette Logo" id="logo">
+                    <div>
+                        <h1>D'BIG BOYS Kitchenette</h1>
+                        <p>Location ID# DBigBoys01</p>
+                    </div>
+                </div>
+                <div class="header-status">
+                    <span>Last Synced <br>● 3 mins ago</span>
+                    <button class="help-btn">?</button>
+                </div>
+            </header>
+
+<nav class="categories">
+            <!-- Category buttons will be injected here by JavaScript -->
+        </nav>
+
+        <main id="menu-grid" class="menu-grid">
+            <!-- All items will be injected here by JavaScript -->
+        </main>
+    </div>
+
+    <!-- Order Summary / Cart -->
+    <aside class="order-summary-container">
+        <header class="order-header">
+            <h2>Current Order</h2>
+            <div>
+                <button id="clear-cart-btn" class="clear-all-btn">Clear All</button>
+                <button class="settings-btn">⚙️</button>
+            </div>
+        </header>
+        
+        <div id="cart-items-wrapper">
+            <ul id="cart-items"></ul>
+        </div>
+
+        <div class="order-total-section">
+            <div class="order-calculation">
+                <div class="total-row">
+                    <span>Subtotal</span>
+                    <span id="subtotal">&#8369;0.00</span>
+                </div>
+                <div class="total-row grand-total">
+                    <span>Total</span>
+                    <span id="total">&#8369;0.00</span>
+                </div>
+            </div>
+            <div class="payment-section">
+                <div class="cash-input-section">
+                    <label for="cash-received">Cash Received</label>
+                    <input type="number" id="cash-received" placeholder="e.g., 500.00">
+                </div>
+                <div class="total-row change-due">
+                    <span>Change Due</span>
+                    <span id="change-due">&#8369;0.00</span>
+                </div>
+                <button id="complete-sale-btn" class="pay-btn">Complete Sale</button>
+            </div>
+        </div>
+    </aside>
+</div>
+
+<!-- Receipt Modal -->
+<div id="receipt-modal" class="receipt-modal-container hidden">
+    <div class="receipt">
+        <div class="receipt-header">
+            <h2>Transaction Receipt</h2>
+            <p>D'BIG BOYS Kitchenette</p>
+            <p id="receipt-date"></p>
+        </div>
+        <div class="receipt-body">
+            <ul id="receipt-items">
+                <!-- Receipt items will be injected here -->
+            </ul>
+        </div>
+        <div class="receipt-footer">
+            <div class="total-row">
+                <span>Subtotal</span>
+                <span id="receipt-subtotal"></span>
+            </div>
+            <div class="total-row grand-total">
+                <span>Total</span>
+                <span id="receipt-total"></span>
+            </div>
+            <hr class="receipt-divider">
+            <div class="total-row">
+                <span>Cash Paid</span>
+                <span id="receipt-cash"></span>
+            </div>
+            <div class="total-row">
+                <span>Change Due</span>
+                <span id="receipt-change"></span>
+            </div>
+        </div>
+        <button id="close-receipt-btn" class="pay-btn">New Order</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

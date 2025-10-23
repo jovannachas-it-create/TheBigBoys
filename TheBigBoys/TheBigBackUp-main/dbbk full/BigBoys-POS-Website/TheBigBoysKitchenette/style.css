@@ -1,0 +1,704 @@
+/* GENERAL STYLES */
+body {
+    font-family: 'Manrope', sans-serif;
+    background: linear-gradient(135deg, #FFF5F2 0%, #F0F4FF 100%);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    color: #2D3748;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden; /* Prevent body scroll */
+}
+
+.pos-container {
+    display: flex;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    background-color: #FFFFFF;
+    border-radius: 0; /* Remove border-radius for full screen */
+    box-shadow: none; /* Remove shadow for full screen */
+    overflow: hidden;
+}
+
+button {
+    cursor: pointer;
+    font-family: 'Manrope', sans-serif;
+    border: none; /* Standardize button border */
+    transition: all 0.2s ease-in-out;
+}
+
+/* LEFT PANEL: MENU CONTAINER */
+.menu-container {
+    flex: 1;
+    padding: 24px 32px;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF; /* Ensure background is white */
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Align items vertically in the center */
+    margin-bottom: 20px;
+}
+
+.header-title {
+    display: flex; /* Align logo and text */
+    align-items: center;
+    gap: 12px;
+}
+
+#logo {
+    width: 60px; /* Adjust logo size */
+    height: 50px;
+    border-radius: 12px; /* Slightly rounded corners for logo */
+    object-fit: cover;
+}
+
+.header-title h1 {
+    font-size: 50px;
+    font-weight: 800;
+    margin: 0;
+    color: #2D3748;
+}
+
+.header-title p {
+    font-size: 14px;
+    color: #718096;
+    margin: 4px 0 0;
+}
+
+.header-status {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: right;
+    font-size: 13px;
+    color: #718096;
+}
+
+.header-status span {
+    line-height: 1.4;
+}
+
+.header-status .help-btn {
+    background-color: #F7FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 50%;
+    width: 36px; /* Slightly larger help button */
+    height: 36px;
+    font-weight: bold;
+    color: #4A5568;
+    font-size: 16px;
+}
+
+/* CATEGORIES */
+.categories {
+    margin: 24px 0;
+    display: flex;
+    gap: 12px; /* Reduced gap for more buttons */
+    flex-wrap: wrap; /* Allow categories to wrap */
+}
+
+.categories button {
+    background: none;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    color: #A0AEC0;
+    padding: 10px 18px; /* More padding for better click area */
+    border-radius: 99px;
+    transition: all 0.2s ease-in-out;
+}
+
+.categories button:hover:not(.active) {
+    background-color: #F7FAFC;
+    color: #4A5568;
+}
+
+.categories button.active {
+    color: #F56565;
+    background-color: #FFF5F5;
+    padding: 10px 18px; /* Consistent padding for active state */
+    border-radius: 99px; /* Ensures a fully rounded shape */
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* MENU GRID - Refactored based on your later definition */
+.menu-grid {
+    flex-grow: 1;
+    display: flex; /* Changed from 'grid' to 'flex' */
+    flex-direction: column; /* Stack content vertically */
+    gap: 0; /* No gap between sections if you're using margin-bottom on .category-items-grid */
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.menu-section-header {
+    /* Keep this style, but it now functions as a standalone header within the flex menu-grid */
+    font-size: 22px;
+    font-weight: 800;
+    margin: 20px 0 10px;
+    color: #2D3748;
+}
+
+/* Style for the grid container within each category */
+.category-items-grid {
+    display: grid;
+    /* Use the same grid template as your original .menu-grid for individual sections */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust minmax as needed */
+    gap: 16px; /* Keep consistent gap between items */
+    margin-bottom: 40px; /* Add some space between different category sections */
+}
+
+.item {
+    background-color: #F7FAFC;
+    border: 1px solid #EDF2F7;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column; /* Stack info and image */
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    position: relative; /* For potential badges */
+}
+
+.item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px -8px rgba(71, 85, 105, 0.1);
+    border-color: #E2E8F0;
+}
+
+.item img {
+    width: 100px; /* Larger images */
+    height: 100px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 12px; /* Space between image and text */
+}
+
+.item-info {
+    flex-grow: 1;
+    width: 100%; /* Ensure info takes full width */
+}
+
+.item-info h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 4px;
+    color: #2D3748;
+}
+
+.item-info .item-desc {
+    font-size: 13px;
+    color: #718096;
+    margin: 0 0 8px;
+}
+
+.item-info .price {
+    font-size: 18px;
+    font-weight: 800;
+    color: #DD6B20;
+    margin: 0;
+}
+
+/* RIGHT PANEL: ORDER SUMMARY */
+.order-summary-container {
+    width: 420px; /* Slightly wider order summary */
+    background-color: #F7FAFC;
+    border-left: 1px solid #E2E8F0;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -5px 0 15px -5px rgba(0,0,0,0.05); /* Subtle shadow for separation */
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.order-header h2 {
+    margin: 0;
+    font-size: 26px; /* Larger header */
+    font-weight: 800;
+    color: #2D3748;
+}
+
+.order-header div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.clear-all-btn {
+    background: #FFF5F5;
+    color: #C53030;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.settings-btn {
+    background-color: white;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    width: 38px; /* Slightly larger settings button */
+    height: 38px;
+    font-size: 18px;
+    color: #4A5568;
+}
+
+#cart-items-wrapper {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 20px; /* Space before totals */
+}
+
+#cart-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#cart-items p { /* Style for empty cart message */
+    text-align: center;
+    color: #A0AEC0;
+    margin-top: 40px;
+    font-size: 16px;
+}
+
+/* --- CART ITEM STYLES (MODIFIED) --- */
+.cart-item {
+    display: flex;
+    /* align-items: center; Removed this to allow content to align based on its internal structure */
+    margin-bottom: 16px;
+    background-color: white;
+    padding: 12px; /* Increased padding */
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    gap: 12px; /* Gap between image and info group */
+}
+
+.cart-item img {
+    width: 60px; /* Slightly larger cart item images */
+    height: 60px;
+    border-radius: 8px; /* Sharper corners for cart item images */
+    object-fit: cover;
+    flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+.cart-item-info-group {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center content */
+    align-items: flex-start; /* Align text to the left */
+}
+
+.cart-item-name-qty {
+    display: flex;
+    align-items: baseline; /* Align name and quantity text */
+    gap: 6px; /* Space between name and quantity */
+    margin-bottom: 4px; /* Space before subtotal price */
+}
+
+.cart-item-info-group h4 {
+    margin: 0;
+    font-size: 17px; /* Larger font for item name */
+    font-weight: 700;
+    color: #2D3748;
+}
+
+.cart-item-quantity-text {
+    font-size: 14px;
+    color: #718096;
+    font-weight: 600;
+}
+
+.cart-item-subtotal-price {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #4A5568;
+}
+
+.cart-item-controls {
+    display: flex;
+    flex-direction: column; /* Stack quantity controls and delete button */
+    align-items: flex-end; /* Align controls to the right */
+    gap: 8px; /* Space between quantity controls and delete button */
+    flex-shrink: 0; /* Prevent controls from shrinking */
+}
+
+.cart-item .quantity-controls {
+    display: flex;
+    align-items: center;
+    background-color: #EDF2F7;
+    border-radius: 8px;
+    padding: 4px; /* Internal padding for quantity controls */
+}
+
+.cart-item .quantity-btn {
+    background-color: transparent;
+    border: none;
+    width: 28px;
+    height: 28px;
+    font-size: 18px; /* Slightly smaller for better fit */
+    color: #4A5568;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+}
+
+.cart-item .quantity-btn:hover {
+    background-color: #E2E8F0;
+}
+
+.cart-item .quantity {
+    font-size: 15px; /* Slightly smaller quantity font */
+    font-weight: 700;
+    margin: 0 6px; /* Reduced margin */
+    color: #2D3748;
+}
+
+.remove-item-btn {
+    background-color: #FED7D7;
+    color: #d12a24;
+    width: 32px; /* Smaller remove button */
+    height: 32px;
+    border-radius: 8px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0; /* Remove padding to size SVG correctly */
+}
+
+.remove-item-btn svg {
+    stroke: #E53E3E;
+}
+
+.remove-item-btn:hover {
+    background-color: #FC8181;
+    color: white;
+}
+
+.remove-item-btn:hover svg {
+    stroke: white;
+}
+/* --- END CART ITEM STYLES --- */
+
+
+/* TOTALS & PAYMENT */
+.order-total-section {
+    padding-top: 20px;
+    border-top: 1px solid #E2E8F0; /* Separator line */
+}
+
+.order-calculation {
+    background-color: white;
+    padding: 18px;
+    border-radius: 16px; /* More rounded corners */
+    margin-bottom: 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 15px;
+    color: #4A5568;
+}
+
+.total-row:last-child {
+    margin-bottom: 0;
+}
+
+.total-row span:last-child {
+    font-weight: 700;
+    color: #2D3748;
+}
+
+.grand-total {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px dashed #E2E8F0;
+    font-size: 20px !important; /* Larger grand total */
+    font-weight: 800 !important;
+    color: #DD6B20 !important; /* Highlight grand total */
+}
+
+.payment-section {
+    background-color: white;
+    padding: 18px;
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+
+.cash-input-section {
+    margin-bottom: 15px;
+}
+
+.cash-input-section label {
+    display: block;
+    font-size: 13px;
+    color: #718096;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+#cash-received {
+    width: calc(100% - 24px); /* Account for padding */
+    padding: 12px;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Manrope', sans-serif;
+    color: #2D3748;
+    background-color: #F7FAFC;
+}
+
+#cash-received:focus {
+    outline: none;
+    border-color: #DD6B20;
+    box-shadow: 0 0 0 2px rgba(221, 107, 32, 0.2);
+}
+
+.change-due {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    color: #2D3748 !important;
+}
+
+.pay-btn {
+    width: 100%;
+    background-color: #DD6B20;
+    color: white;
+    border-radius: 12px;
+    padding: 18px; /* More padding for a bigger button */
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    box-shadow: 0 8px 20px -8px rgba(221, 107, 32, 0.4);
+}
+
+.pay-btn:hover {
+    background-color: #C05621;
+    box-shadow: 0 10px 25px -10px rgba(221, 107, 32, 0.5);
+}
+
+/* RECEIPT MODAL */
+.receipt-modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6); /* Darker overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1; /* Start visible for transition */
+    visibility: visible;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.receipt-modal-container.hidden {
+    opacity: 0;
+    visibility: hidden;
+    display: none; /* Add display none to completely remove it from layout when hidden */
+}
+
+.receipt {
+    background-color: #FFFFFF;
+    padding: 30px 40px; /* More padding */
+    border-radius: 16px;
+    width: 400px; /* Fixed width for receipt */
+    max-width: 90%; /* Added max-width for better responsiveness */
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transform: translateY(0); /* Start position for animation */
+    transition: transform 0.3s ease-in-out;
+}
+
+.receipt-modal-container.hidden .receipt {
+    transform: translateY(20px); /* Animate out */
+}
+
+.receipt-header {
+    margin-bottom: 25px;
+    border-bottom: 1px dashed #E2E8F0;
+    padding-bottom: 20px;
+}
+
+.receipt-header h2 {
+    font-size: 28px;
+    font-weight: 800;
+    margin: 0 0 8px;
+    color: #2D3748;
+}
+
+.receipt-header p {
+    font-size: 15px;
+    color: #718096;
+    margin: 0;
+}
+
+#receipt-date {
+    font-size: 13px;
+    color: #A0AEC0;
+    margin-top: 10px;
+    display: block;
+}
+
+.receipt-body {
+    margin-bottom: 25px;
+}
+
+#receipt-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#receipt-items li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: #4A5568;
+}
+
+#receipt-items .item-name {
+    font-weight: 600;
+    color: #2D3748;
+}
+
+#receipt-items .item-price {
+    font-weight: 700;
+}
+
+.receipt-footer {
+    border-top: 1px dashed #E2E8F0;
+    padding-top: 20px;
+    margin-top: 25px;
+}
+
+.receipt-footer .total-row {
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+.receipt-footer .total-row span:last-child {
+    font-weight: 800;
+    color: #2D3748;
+}
+
+.receipt-footer .grand-total {
+    font-size: 20px !important;
+    color: #DD6B20 !important;
+    margin-bottom: 20px;
+}
+
+.receipt-divider {
+    border: none;
+    border-top: 1px dashed #E2E8F0;
+    margin: 20px 0;
+}
+
+#close-receipt-btn {
+    margin-top: 25px;
+    background-color: #DD6B20;
+    color: white;
+    padding: 15px;
+    font-size: 17px;
+    border-radius: 12px;
+    width: 100%;
+    box-shadow: 0 8px 20px -8px rgba(221, 107, 32, 0.4);
+}
+
+#close-receipt-btn:hover {
+    background-color: #C05621;
+    box-shadow: 0 10px 25px -10px rgba(221, 107, 32, 0.5);
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 8px;
+} /* Slightly wider scrollbar */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #CBD5E0;
+    border-radius: 4px;
+} /* Darker thumb */
+::-webkit-scrollbar-thumb:hover {
+    background: #A0AEC0;
+}
+
+
+/* Responsive adjustments (optional, but good practice for full screen) */
+@media (max-width: 1200px) {
+    /* Apply responsive grid to the new category-items-grid */
+    .category-items-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+
+    .order-summary-container {
+        width: 360px;
+    }
+}
+
+@media (max-width: 900px) {
+    .pos-container {
+        flex-direction: column; /* Stack panels on smaller screens */
+        height: auto;
+    }
+
+    .menu-container {
+        padding-bottom: 0;
+    }
+
+    .order-summary-container {
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid #E2E8F0;
+        padding-top: 20px;
+        box-shadow: 0 -5px 15px -5px rgba(0,0,0,0.05);
+    }
+
+    /* Apply responsive grid to the new category-items-grid */
+    .category-items-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        padding-bottom: 20px; /* Adjust as needed */
+    }
+
+    /* When filtering to a single category, the menuGrid itself will act as the grid */
+    .menu-grid {
+        /* When only one category is displayed, revert menuGrid to act as a grid */
+        /* This media query applies to all .menu-grid instances,
+        so ensure it doesn't conflict when individual categories are shown */
+        /* You might need more specific CSS if this causes issues,
+        but generally, it will be overridden by the .category-items-grid when present */
+    }
+}
